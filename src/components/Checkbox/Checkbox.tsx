@@ -1,7 +1,12 @@
 import styled from 'styled-components';
-import * as InputCheckbox from '@radix-ui/react-checkbox';
+import * as CheckboxRadix from '@radix-ui/react-checkbox';
 
-const CheckboxRoot = styled(InputCheckbox.Root)`
+interface CheckboxProps
+  extends React.ComponentProps<typeof CheckboxRadix.Root> {
+  children: string;
+}
+
+const CheckboxRoot = styled(CheckboxRadix.Root)`
   appearance: none;
   border: 2px solid #e5e5e9;
   background-color: transparent;
@@ -39,12 +44,11 @@ const Wrapper = styled.div`
 
 export default function Checkbox({
   children = 'Checkbox',
-}: {
-  children: string;
-}) {
+  ...props
+}: CheckboxProps) {
   return (
     <Wrapper>
-      <CheckboxRoot />
+      <CheckboxRoot {...props} />
       <Label>{children}</Label>
     </Wrapper>
   );

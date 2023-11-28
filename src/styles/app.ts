@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   min-height: calc(var(--vh, 1vh) * 100);
-  max-width: 30rem;
+  max-width: 35rem;
   margin: 0 auto;
 `;
 
@@ -43,9 +43,23 @@ export const PasswordWrapper = styled.div`
   width: 100%;
 `
 
+export const CaracteresLenghtWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: 600;
+`
+
+export const SliderWrapper = styled.div`
+  width: 100%;
+  margin-bottom: 1rem;
+`
+
 export const Password = styled.p`
   color: #e5e5e9;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 600;
   margin: 0;
 
