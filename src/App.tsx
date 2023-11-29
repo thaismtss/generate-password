@@ -12,11 +12,13 @@ import {
   SliderWrapper,
 } from './styles/app';
 import { CopyIcon } from '@radix-ui/react-icons';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Slider from './components/Slider/Slider';
 import { generatePassword } from './utils';
+import { ToastContext } from './components/Toast/Toast';
 
 function App() {
+  const { toast } = useContext(ToastContext);
   const [password, setPassword] = useState('');
   const [options, setOptions] = useState({
     caracteresLenght: 10,
@@ -37,6 +39,14 @@ function App() {
       numbers: options.includeNumbers,
       symbols: options.includeSymbols,
     });
+    if (!newPassword) {
+      toast({
+        title: 'Selecione pelo menos uma opção',
+        duration: 5000,
+        variant: 'warning',
+      });
+      return;
+    }
     setPassword(newPassword);
   }
 
@@ -44,9 +54,17 @@ function App() {
     if (!password) return;
     try {
       await navigator.clipboard.writeText('password');
-      alert('Senha copiada com sucesso');
+      toast({
+        title: 'Senha copiada com sucesso',
+        duration: 5000,
+        variant: 'success',
+      });
     } catch {
-      alert('Não foi possível copiar a senha');
+      toast({
+        title: 'Erro ao copiar senha',
+        duration: 5000,
+        variant: 'error',
+      });
     }
   }
 
