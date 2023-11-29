@@ -1,5 +1,7 @@
-import Checkbox from './components/Checkbox/Checkbox';
-import Button from './components/Button/Button';
+import Checkbox from './components/Checkbox';
+import Button from './components/Button';
+import Slider from './components/Slider';
+import { ToastContext } from './components/Toast';
 import {
   H5,
   ContainerWrapper,
@@ -13,9 +15,7 @@ import {
 } from './styles/app';
 import { CopyIcon } from '@radix-ui/react-icons';
 import { useContext, useState } from 'react';
-import Slider from './components/Slider/Slider';
 import { generatePassword } from './utils';
-import { ToastContext } from './components/Toast/Toast';
 
 function App() {
   const { toast } = useContext(ToastContext);
