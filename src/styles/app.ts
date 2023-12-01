@@ -16,6 +16,9 @@ export const Wrapper = styled.div`
   min-height: calc(var(--vh, 1vh) * 100);
   max-width: 35rem;
   margin: 0 auto;
+  @media (max-width: 768px) {
+    max-width: calc(100vw - 6rem);
+  }
 `;
 
 export const CheckboxWrapper = styled.div`

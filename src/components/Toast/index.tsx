@@ -61,8 +61,13 @@ const ToastRoot = styled(ToastRadix.Root)<ToastRootProps>`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.5;
-  max-width: 320px;
-  width: 100%;
+  width: 320px;
+
+  @media (max-width: 768px) {
+    width: calc(100vw - 4rem);
+    margin: 0 auto;
+  }
+
   &:focus {
     outline: none;
   }
@@ -100,42 +105,52 @@ const ToastDescription = styled(ToastRadix.Description)`
 
 const ToastViewport = styled(ToastRadix.Viewport)`
   position: fixed;
-  top: 0;
-  right: 30px;
+  left: 50%;
+  top: 5%;
+  transform: translate(-50%, -50%);
   z-index: 9999;
   display: flex;
   flex-direction: column;
   pointer-events: none;
-  gap: 8px;
-  width: 320px;
-  max-width: 100vw;
+  /* gap: 8px; */
   margin: 0;
   list-style: none;
   outline: none;
   padding: ${VIEWPORT_PADDING}px;
+  width: 320px;
+
+  @media (max-width: 768px) {
+    width: 100vw;
+  }
 `;
 
 export default function ToastProvider({ children }: ToastProviderProps) {
-  const [toasts, setToasts] = useState<ToastProps[]>([]);
+  const [open, setOpen] = useState(false);
+  const [currentToast, setCurrentToast] = useState<ToastProps>(
+    {} as ToastProps
+  );
 
   function toast(props: ToastProps) {
-    setToasts(toast => [...toast, props]);
+    setCurrentToast({ ...props });
+    setOpen(true);
   }
+
   return (
     <ToastContext.Provider value={{ toast }}>
       <ToastRadix.Provider swipeDirection="left">
         {children}
-        {toasts.map(({ title, description, variant, duration }, index) => (
-          <ToastRoot
-            key={index}
-            duration={duration ?? 3000}
-            {...toast}
-            variant={variant ?? 'success'}
-          >
-            <ToastTitle className="font-semibold mb-1">{title}</ToastTitle>
-            <ToastDescription>{description}</ToastDescription>
-          </ToastRoot>
-        ))}
+        <ToastRoot
+          {...currentToast}
+          duration={2000}
+          variant={currentToast.variant}
+          open={open}
+          onOpenChange={setOpen}
+        >
+          <ToastTitle className="font-semibold mb-1">
+            {currentToast.title}
+          </ToastTitle>
+          <ToastDescription>{currentToast.description}</ToastDescription>
+        </ToastRoot>
         <ToastViewport />
       </ToastRadix.Provider>
     </ToastContext.Provider>
