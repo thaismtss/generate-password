@@ -41,7 +41,7 @@ export default function ToastProvider({ children }: ToastProviderProps) {
           open={open}
           onOpenChange={setOpen}
         >
-          <ToastTitle className="font-semibold mb-1">
+          <ToastTitle>
             {currentToast.title}
           </ToastTitle>
           <ToastDescription>{currentToast.description}</ToastDescription>
