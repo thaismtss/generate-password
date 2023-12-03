@@ -9,5 +9,5 @@ const GlobalStyle = createGlobalStyle`
     font-family: monospace;
   }
 `;
- 
+
 export default GlobalStyle;

@@ -1,12 +1,12 @@
-import * as ToastRadix from '@radix-ui/react-toast';
-import { createContext, useState } from 'react';
+import * as ToastRadix from "@radix-ui/react-toast";
+import { createContext, useState } from "react";
 import {
   ToastDescription,
   ToastProps,
   ToastRoot,
   ToastTitle,
   ToastViewport,
-} from './styles';
+} from "./styles";
 export interface ToastProviderProps {
   children: React.ReactNode;
 }
@@ -16,13 +16,13 @@ type ToastContextType = {
 };
 
 export const ToastContext = createContext<ToastContextType>(
-  {} as ToastContextType
+  {} as ToastContextType,
 );
 
 export default function ToastProvider({ children }: ToastProviderProps) {
   const [open, setOpen] = useState(false);
   const [currentToast, setCurrentToast] = useState<ToastProps>(
-    {} as ToastProps
+    {} as ToastProps,
   );
 
   function toast(props: ToastProps) {

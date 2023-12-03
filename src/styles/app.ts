@@ -44,7 +44,7 @@ export const PasswordWrapper = styled.div`
   padding: 1rem 2rem;
   margin-bottom: 1rem;
   width: 100%;
-`
+`;
 
 export const CaracteresLenghtWrapper = styled.div`
   display: flex;
@@ -53,12 +53,12 @@ export const CaracteresLenghtWrapper = styled.div`
   width: 100%;
   font-size: 1.2rem;
   font-weight: 600;
-`
+`;
 
 export const SliderWrapper = styled.div`
   width: 100%;
   margin-bottom: 1rem;
-`
+`;
 
 export const Password = styled.p`
   color: #e5e5e9;
@@ -67,7 +67,7 @@ export const Password = styled.p`
   margin: 0;
 
   &:empty::before {
-    content: 'P4s$w0rd';
+    content: "P4s$w0rd";
     color: #5e5c6a;
   }
 `;
@@ -88,4 +88,4 @@ export const CopyButton = styled.button`
     transition-duration: 0.5s;
     transition-delay: 0.2s;
   }
-`
+`;

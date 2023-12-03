@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import * as CheckboxRadix from '@radix-ui/react-checkbox';
+import * as CheckboxRadix from "@radix-ui/react-checkbox";
 
 export const CheckboxRoot = styled(CheckboxRadix.Root)`
   appearance: none;
@@ -11,13 +11,13 @@ export const CheckboxRoot = styled(CheckboxRadix.Root)`
   transition: all 0.2s ease-in-out;
   width: 1.5rem;
 
-  &[data-state='checked'] {
+  &[data-state="checked"] {
     background-color: #a5ffaf;
     border-color: #a5ffaf;
   }
 
-  &[data-state='checked']::before {
-    content: '✔';
+  &[data-state="checked"]::before {
+    content: "✔";
     font-size: 1rem;
     position: relative;
     left: -0.1rem;

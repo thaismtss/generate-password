@@ -1,5 +1,5 @@
-import * as SliderRadix from '@radix-ui/react-slider';
-import styled from 'styled-components';
+import * as SliderRadix from "@radix-ui/react-slider";
+import styled from "styled-components";
 
 export const SliderRoot = styled(SliderRadix.Root)`
   position: relative;

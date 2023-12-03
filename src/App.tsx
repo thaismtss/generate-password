@@ -1,7 +1,7 @@
-import Checkbox from './components/Checkbox';
-import Button from './components/Button';
-import Slider from './components/Slider';
-import { ToastContext } from './components/Toast';
+import Checkbox from "./components/Checkbox";
+import Button from "./components/Button";
+import Slider from "./components/Slider";
+import { ToastContext } from "./components/Toast";
 import {
   H5,
   ContainerWrapper,
@@ -12,14 +12,14 @@ import {
   Password,
   CaracteresLenghtWrapper,
   SliderWrapper,
-} from './styles/app';
-import { CopyIcon } from '@radix-ui/react-icons';
-import { useContext, useState } from 'react';
-import { generatePassword } from './utils';
+} from "./styles/app";
+import { CopyIcon } from "@radix-ui/react-icons";
+import { useContext, useState } from "react";
+import { generatePassword } from "./utils";
 
 function App() {
   const { toast } = useContext(ToastContext);
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
   const [options, setOptions] = useState({
     caracteresLenght: 10,
     includeUppercase: false,
@@ -29,7 +29,7 @@ function App() {
   });
 
   function handleCheckboxChange(optionKey: string, value: boolean | number[]) {
-    setOptions(prevOptions => ({ ...prevOptions, [optionKey]: value }));
+    setOptions((prevOptions) => ({ ...prevOptions, [optionKey]: value }));
   }
 
   function handleGeneratePassword() {
@@ -41,9 +41,9 @@ function App() {
     });
     if (!newPassword) {
       toast({
-        title: 'Selecione pelo menos uma opção',
+        title: "Selecione pelo menos uma opção",
         duration: 5000,
-        variant: 'warning',
+        variant: "warning",
       });
       return;
     }
@@ -53,45 +53,45 @@ function App() {
   async function handleCopyPassword() {
     if (!password) return;
     try {
-      await navigator.clipboard.writeText('password');
+      await navigator.clipboard.writeText("password");
       toast({
-        title: 'Senha copiada com sucesso',
+        title: "Senha copiada com sucesso",
         duration: 5000,
-        variant: 'success',
+        variant: "success",
       });
     } catch {
       toast({
-        title: 'Erro ao copiar senha',
+        title: "Erro ao copiar senha",
         duration: 5000,
-        variant: 'error',
+        variant: "error",
       });
     }
   }
 
   const checkboxOptions = [
     {
-      label: 'Incluir letras maiúsculas',
+      label: "Incluir letras maiúsculas",
       checked: options.includeUppercase,
       onCheckedChange: (value: boolean) =>
-        handleCheckboxChange('includeUppercase', value),
+        handleCheckboxChange("includeUppercase", value),
     },
     {
-      label: 'Incluir letras mininúsculas',
+      label: "Incluir letras mininúsculas",
       checked: options.includeLowercase,
       onCheckedChange: (value: boolean) =>
-        handleCheckboxChange('includeLowercase', value),
+        handleCheckboxChange("includeLowercase", value),
     },
     {
-      label: 'Incluir números',
+      label: "Incluir números",
       checked: options.includeNumbers,
       onCheckedChange: (value: boolean) =>
-        handleCheckboxChange('includeNumbers', value),
+        handleCheckboxChange("includeNumbers", value),
     },
     {
-      label: 'Incluir símbolos',
+      label: "Incluir símbolos",
       checked: options.includeSymbols,
       onCheckedChange: (value: boolean) =>
-        handleCheckboxChange('includeSymbols', value),
+        handleCheckboxChange("includeSymbols", value),
     },
   ];
 
@@ -114,13 +114,13 @@ function App() {
             min={3}
             max={50}
             value={[options.caracteresLenght]}
-            onValueChange={value =>
-              handleCheckboxChange('caracteresLenght', value)
+            onValueChange={(value) =>
+              handleCheckboxChange("caracteresLenght", value)
             }
           />
         </SliderWrapper>
         <CheckboxWrapper>
-          {checkboxOptions.map(option => (
+          {checkboxOptions.map((option) => (
             <Checkbox
               key={option.label}
               checked={option.checked}

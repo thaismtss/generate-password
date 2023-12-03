@@ -1,5 +1,5 @@
-import * as SliderRadix from '@radix-ui/react-slider';
-import { SliderRange, SliderRoot, SliderThumb, SliderTrack } from './styles';
+import * as SliderRadix from "@radix-ui/react-slider";
+import { SliderRange, SliderRoot, SliderThumb, SliderTrack } from "./styles";
 
 interface SliderProps extends React.ComponentProps<typeof SliderRadix.Root> {}
 

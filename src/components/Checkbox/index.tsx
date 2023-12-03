@@ -1,5 +1,5 @@
-import * as CheckboxRadix from '@radix-ui/react-checkbox';
-import { CheckboxRoot, Label, Wrapper } from './styles';
+import * as CheckboxRadix from "@radix-ui/react-checkbox";
+import { CheckboxRoot, Label, Wrapper } from "./styles";
 
 interface CheckboxProps
   extends React.ComponentProps<typeof CheckboxRadix.Root> {
@@ -7,13 +7,13 @@ interface CheckboxProps
 }
 
 export default function Checkbox({
-  children = 'Checkbox',
+  children = "Checkbox",
   ...props
 }: CheckboxProps) {
   return (
     <Wrapper>
-      <CheckboxRoot {...props} />
-      <Label>{children}</Label>
+      <CheckboxRoot {...props} id="checkbox" />
+      <Label htmlFor="checkbox">{children}</Label>
     </Wrapper>
   );
 }
